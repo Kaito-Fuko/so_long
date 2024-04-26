@@ -6,11 +6,28 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/25 18:08:01 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:19:19 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	init_param(t_maps *maps, char c)
+{
+	maps->s.y = maps->y;
+	maps->s.x = ft_strlen(maps->maps[0]);
+	prem_charac(maps, c);
+}
+
+void	free_split(char **str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
 
 int	ft_check_ber(char *str)
 {
@@ -61,7 +78,8 @@ void	ft_maps(char *fichier, t_maps *maps)
 	fd = open(fichier, O_RDONLY);
 	if (fd < 0)
 		return ;
-	maps->maps = (char **)malloc(maps->x * sizeof(char *) + 1);
+	// printf("x = %i | y = %i\n", maps->x, maps->y);
+	maps->maps = (char **)malloc(maps->y * sizeof(char *) + 1);
 	while (++i <= maps->y)
 	{
 		maps->maps[i] = malloc(maps->x * sizeof(char) + 1);

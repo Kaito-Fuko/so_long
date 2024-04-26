@@ -24,7 +24,7 @@ GET_NEXT_LINE_PATH	= $(get_next_line:%=src/gnl/%)
 get_next_line		= get_next_line.c get_next_line_utils.c
 
 SO_LONG_PATH	= $(so_long:%=src/so_long/%)
-so_long			= so_long.c init_maps.c ft_maps_valide.c
+so_long			= so_long.c init_maps.c ft_maps_valide.c flood_fill.c
 				
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
