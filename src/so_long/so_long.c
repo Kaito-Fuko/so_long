@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/26 16:04:36 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/04/30 09:55:55 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	**ft_tmp(char **maps, char **maps_tmp, int x, int y)
 	// 	printf("	%s", maps[i]);
 	// printf("\n\n");
 	i = -1;
-	maps_tmp = malloc(y * sizeof(char *) + 1);
+	// maps_tmp = NULL;
+	maps_tmp = malloc(y * (sizeof(char *) + 1));
 	if (!maps_tmp)
 		return (NULL);
 	while (maps[++i])
@@ -34,6 +35,8 @@ char	**ft_tmp(char **maps, char **maps_tmp, int x, int y)
 			return (free_split(maps_tmp), NULL);
 		while (maps[i][++j])
 			maps_tmp[i][j] = maps[i][j];
+		printf("%i\n", j);
+		printf("%s", maps_tmp[i]);
 		maps_tmp[i][j] = '\0';
 	}
 	maps_tmp[i] = NULL;
@@ -42,6 +45,7 @@ char	**ft_tmp(char **maps, char **maps_tmp, int x, int y)
 
 void	init_param_zero(t_maps *maps)
 {
+	maps->maps = NULL;
 	maps->count.c = 0;
 	maps->count.e = 0;
 	maps->count.p = 0;
@@ -66,7 +70,7 @@ int	init_maps(char *fichier, t_maps *maps)
 	// ft_printf_maps(maps);
 	maps_tmp = ft_tmp(maps->maps, maps_tmp, maps->x, maps->y);
 	if (!maps_tmp)
-		return (-1);
+		return (free_split(maps->maps), -1);
 	if (check_maps(maps) == -1)
 		return (free_split(maps_tmp), -1);
 	if (check_chemin(maps) == -1)
@@ -75,6 +79,7 @@ int	init_maps(char *fichier, t_maps *maps)
 	free_split(maps->maps);
 	maps->maps = ft_tmp(maps_tmp, maps->maps, maps->x, maps->y);
 	// ft_printf_maps(maps); 
+	free_split(maps->maps);
 	return (0);
 }
 
@@ -84,11 +89,11 @@ int	main(int ac, char **av)
 
 	maps = malloc(sizeof(t_maps));
 	if (ac != 2)
-		return (ft_putstr_fd("Error : invalid argument\n", 2), 0);
+		return (free(maps), ft_putstr_fd("Error : invalid argument\n", 2), 0);
 	if (ft_check_ber(av[1]) == -1)
-		return (ft_putstr_fd("Error : invalid files\n", 2), 0);
+		return (free(maps), ft_putstr_fd("Error : invalid files\n", 2), 0);
 	if (init_maps(av[1], maps) == -1)
-		return (ft_putstr_fd("Error : invalid maps\n", 2), 0);
+		return (free(maps), ft_putstr_fd("Error : invalid maps\n", 2), 0);
 	ft_putstr_fd("OK : valid maps\n", 1);
 	return (0);
 }

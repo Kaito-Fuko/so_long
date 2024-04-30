@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/26 15:19:19 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/04/30 09:57:20 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_line(char *fichier, t_maps *maps)
 		ligne = get_next_line(fd);
 		maps->y++;
 	}
+	free(ligne);
 }
 
 void	ft_maps(char *fichier, t_maps *maps)
@@ -79,13 +80,14 @@ void	ft_maps(char *fichier, t_maps *maps)
 	if (fd < 0)
 		return ;
 	// printf("x = %i | y = %i\n", maps->x, maps->y);
-	maps->maps = (char **)malloc(maps->y * sizeof(char *) + 1);
+	maps->maps = (char **)malloc(maps->y * (sizeof(char *) + 1));
 	while (++i <= maps->y)
 	{
 		maps->maps[i] = malloc(maps->x * sizeof(char) + 1);
 		if (!maps->maps[i])
 			return ;
 		maps->maps[i] = get_next_line(fd);
+		maps->maps[i][maps->x] = '\0';
 	}
 	maps->maps[i] = NULL;
 }
