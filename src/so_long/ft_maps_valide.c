@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:50:31 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/30 08:45:05 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:32:24 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_printf_maps(t_maps *maps)
 	printf("\n");
 	printf("pos x = %i, pos y = %i\n", maps->p.x, maps->p.y);
 	printf("size x = %i, size y = %i\n", maps->s.x, maps->s.y);
-	printf("\n\n");
+	printf("\n");
 }
 
 int	ft_check(char *maps, unsigned int size)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 09:53:52 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/16 12:32:57 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:51:46 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,21 +95,3 @@ char	**ft_split(const char *s, char c)
 	ft_print(s, str, c);
 	return ((char **)str);
 }
-/*
-#include <stdio.h>
-int    main()
-{
-    int i;
-    char **ga;
-    char s[20] = "trle42.";
-    char e = '.';
-
-    i = 0;
-    printf("before : %s\n", s);
-    ga = ft_split(s, e);
-    while (ga[i])
-    {
-        printf("after ft_split : %s\n", ga[i]);
-        i++;
-    }
-}*/

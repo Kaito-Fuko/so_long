@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:22:02 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/14 14:59:50 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:52:00 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,3 @@ char	*ft_strdup(const char *src)
 	str[i] = '\0';
 	return ((char *)str);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int	main()
-{
-	char s[10] = "";
-	printf("before : %s\n", s);
-	printf("after strdup : %s\n", strdup(s));
-	printf("after ft_strdup : %s\n", ft_strdup(s));
-}*/

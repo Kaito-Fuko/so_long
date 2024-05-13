@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:02:02 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/16 11:15:27 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:52:43 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[l] = '\0';
 	return (str);
 }
-/*
-#include <stdio.h>
-int main()
-{
-    char *s1 = "   \t  \n\n \t\t  \n\n\n\n   \n \n \t\t\n  ";
-    char *s2 = "Hello \t  Please\n Trim me !";
-    char *ret = ft_strtrim(s1, " \n\t");
-}*/

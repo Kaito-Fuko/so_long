@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:57:49 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/16 15:02:30 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:52:13 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,3 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	dest[str_len + i] = '\0';
 	return (str_len + ft_strlen(src));
 }
-/*
-int	main()
-{
-	char d[10] = "origami";
-	char s[10] = "master";
-	printf("%d", ft_strlcat(d, s, 9));
-	return(0);
-}*/

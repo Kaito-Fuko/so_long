@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:33:34 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:44:10 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:50:40 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	}
 	return (str);
 }
-/*
-int	main()
-{
-        void * d1 = ft_calloc(30, 1);
-        void * d2 = calloc(30, 1);
-}*/

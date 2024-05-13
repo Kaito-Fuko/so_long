@@ -6,7 +6,7 @@
 /*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:29:44 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/17 20:29:33 by kaito            ###   ########.fr       */
+/*   Updated: 2024/05/07 14:53:17 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,21 +116,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-
-// #include <fcntl.h>
-// #include <stdio.h>
-// int main()
-// {
-// 	int i;
-// 	int fd;
-// 	char *gnl;
-// 	fd = open("test.txt", O_RDONLY);
-// 	i = 1;
-// 	while (i < 6)
-// 	{
-// 		gnl = get_next_line(fd);
-// 		printf("%i: %s", i, gnl);
-// 		free(gnl);
-// 		i++;
-// 	}
-// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:36:07 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/16 11:08:32 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:52:07 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[j] = '\0';
 	return (str);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	char s[10] = "";
-	char c[10] = "";
-	printf("before : %s& %s\n", s, c);
-	printf("after ft_strjoin : %s", ft_strjoin(s, c));
-}*/

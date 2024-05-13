@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:16:48 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/14 14:57:52 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:50:30 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (nb * s);
 }
-/*
-#include <stdio.h>
-#include <stdlib.h>
-int main()
-{
-	char s[10] = "1";
-	printf("%d\n", atoi(s));
-	printf("%d", ft_atoi(s));
-	return (0);
-}*/

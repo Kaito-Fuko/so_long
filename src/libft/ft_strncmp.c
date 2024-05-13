@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:41:02 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/16 15:03:50 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:52:26 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	diff = (unsigned char)s1[i] - (unsigned char)s2[i];
 	return (diff);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int main()
-{
-	char *s = "hello";
-	char *c = "hel";
-	unsigned int n = 42;
-	printf("%d\n", strncmp(s,c,n));
-	printf("%d", ft_strncmp(s,c,n));
-	return (0);
-}*/

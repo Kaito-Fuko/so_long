@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:48:37 by kaito             #+#    #+#             */
-/*   Updated: 2024/04/26 16:04:43 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:40:28 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <../minilibx/mlx.h>
 
 typedef struct s_size
 {
@@ -47,7 +48,6 @@ typedef struct s_maps
 	t_count			count;
 	t_pos			p;
 	t_size			s;
-	struct s_maps	*next;
 }	t_maps;
 
 // so_long

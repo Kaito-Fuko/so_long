@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:52:56 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:41:06 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:51:37 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,3 @@ void	*ft_memset(void *s1, int c, size_t n)
 	}
 	return (s1);
 }
-/*
-int main()
-{
-        const int size = 18;
-        char b1[0xF00];
-        char *r2 = ft_memset(b1, 'A', size);
-        r2 = ft_memset("", 'A', 0);
-}*/

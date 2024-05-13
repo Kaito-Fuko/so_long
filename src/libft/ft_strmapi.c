@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:31:46 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/16 11:32:21 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:52:22 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-/*
-char ft_f(unsigned int i, char c)
-{
-	c = c + 2;
-	return (c);
-}
-int main()
-{
-	char	 *c = ft_strmapi("origami", ft_f);
-	printf("%s\n", c);
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:01:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:43:58 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:51:33 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (d);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int main()
-{
-	char d[100] = "origami";
-	char s[100] = "origqmim";
-	printf("before : %s %s\n", d, s);
-	printf("after memmove : %p\n", memmove(d, s, 3));
-	printf("after ft_memmove : %p\n", ft_memmove(d, s, 3));
-}*/

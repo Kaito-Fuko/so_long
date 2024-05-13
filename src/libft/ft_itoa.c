@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:22:16 by jhatchi-          #+#    #+#             */
-/*   Updated: 2023/11/14 15:46:07 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:50:56 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,3 @@ char	*ft_itoa(int n)
 	ft_print(i, b, n, str);
 	return (str);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	char *i1 = ft_itoa(-1234);
-}
-*/

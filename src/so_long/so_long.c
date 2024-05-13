@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/30 09:55:55 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:32:46 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,21 @@ char	**ft_tmp(char **maps, char **maps_tmp, int x, int y)
 	// 	printf("	%s", maps[i]);
 	// printf("\n\n");
 	i = -1;
-	// maps_tmp = NULL;
 	maps_tmp = malloc(y * (sizeof(char *) + 1));
 	if (!maps_tmp)
 		return (NULL);
 	while (maps[++i])
 	{
+		// printf("i = %i x = %i y = %i %s", i, x, y, maps[i]);
 		j = -1;
 		maps_tmp[i] = malloc(x * sizeof(char) + 1);
 		if (!maps_tmp[i])
 			return (free_split(maps_tmp), NULL);
 		while (maps[i][++j])
 			maps_tmp[i][j] = maps[i][j];
-		printf("%i\n", j);
-		printf("%s", maps_tmp[i]);
 		maps_tmp[i][j] = '\0';
 	}
-	maps_tmp[i] = NULL;
+	// printf("\n");
 	return (maps_tmp);
 }
 
@@ -67,7 +65,7 @@ int	init_maps(char *fichier, t_maps *maps)
 	ft_maps(fichier, maps);
 	if (maps->maps == NULL)
 		return (-1);
-	// ft_printf_maps(maps);
+	ft_printf_maps(maps);
 	maps_tmp = ft_tmp(maps->maps, maps_tmp, maps->x, maps->y);
 	if (!maps_tmp)
 		return (free_split(maps->maps), -1);
@@ -95,5 +93,7 @@ int	main(int ac, char **av)
 	if (init_maps(av[1], maps) == -1)
 		return (free(maps), ft_putstr_fd("Error : invalid maps\n", 2), 0);
 	ft_putstr_fd("OK : valid maps\n", 1);
+	
+	free(maps);
 	return (0);
 }

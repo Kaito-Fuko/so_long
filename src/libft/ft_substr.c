@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaito <kaito@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:50:30 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/22 15:08:28 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:52:49 by kaito            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	str[j] = '\0';
 	return (str);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int	main()
-{
-	char * s = ft_substr("0123456789", 9, 10);
-	printf("before : %s\n", s);
-	printf("after ft_substr : %s\n", s);
-}*/

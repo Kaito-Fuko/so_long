@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/04/30 09:57:20 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:29:15 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int	ft_check_ber(char *str)
 		j--;
 		i--;
 	}
-	if (j == 0)
-		return (i);
+	if (open(str, O_RDONLY) > 0)
+		if (j == 0)
+			return (i);
 	return (-1);
 }
 
@@ -60,7 +61,7 @@ void	ft_line(char *fichier, t_maps *maps)
 	if (ligne == NULL)
 		return ;
 	maps->x = ft_strlen(ligne);
-	maps->y = 0;
+	maps->y = 1;
 	while (ligne != NULL && ft_strlen(ligne) == maps->x)
 	{
 		free(ligne);
@@ -79,9 +80,13 @@ void	ft_maps(char *fichier, t_maps *maps)
 	fd = open(fichier, O_RDONLY);
 	if (fd < 0)
 		return ;
-	// printf("x = %i | y = %i\n", maps->x, maps->y);
-	maps->maps = (char **)malloc(maps->y * (sizeof(char *) + 1));
-	while (++i <= maps->y)
+	printf("x = %i | y = %i\n", maps->x, maps->y);
+	if (maps->y == 0 && maps->x == 0)
+		return ;
+	maps->maps = ft_calloc(maps->y, (sizeof(char *) + 1));
+	if (!maps->maps)
+		return ;
+	while (++i < maps->y && maps->x != 0)
 	{
 		maps->maps[i] = malloc(maps->x * sizeof(char) + 1);
 		if (!maps->maps[i])
@@ -89,5 +94,4 @@ void	ft_maps(char *fichier, t_maps *maps)
 		maps->maps[i] = get_next_line(fd);
 		maps->maps[i][maps->x] = '\0';
 	}
-	maps->maps[i] = NULL;
 }
