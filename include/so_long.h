@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:48:37 by kaito             #+#    #+#             */
-/*   Updated: 2024/05/13 16:40:28 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:09:25 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <../minilibx/mlx.h>
+# include <mlx.h>
 
 typedef struct s_size
 {
@@ -40,6 +40,14 @@ typedef struct s_count
 	int	e;
 }	t_count;
 
+typedef struct s_win
+{
+	void	*m_ptr;
+	void	*w_ptr;
+	int		height;
+	int		width;
+}	t_win;
+
 typedef struct s_maps
 {
 	unsigned int	x;
@@ -48,16 +56,15 @@ typedef struct s_maps
 	t_count			count;
 	t_pos			p;
 	t_size			s;
+	t_win			w;
 }	t_maps;
 
 // so_long
-void	init_param_zero(t_maps *maps);
-char	**ft_tmp(char **maps, char **maps_tmp, int x, int y);
 int		init_maps(char *fichier, t_maps *maps);
 
 // init_maps
-void	init_param(t_maps *maps, char c);
 void	free_split(char **str);
+void	init_param_zero(t_maps *maps);
 int		ft_check_ber(char *str);
 void	ft_line(char *fichier, t_maps *maps);
 void	ft_maps(char *fichier, t_maps *maps);
@@ -70,11 +77,16 @@ int		check_maps(t_maps *maps);
 void	prem_charac(t_maps *maps, char c);
 
 // flood_fill
+void	init_param(t_maps *maps, char c);
 void	flood(char **tab, t_size size, t_pos cur);
 int		check_fill(char **maps);
+char	**ft_tmp(char **maps, char **maps_tmp, int x, int y);
 int		check_one_charac(char **maps, t_count count);
 
+// key_mlx
+int key_esc(int keycode, t_maps *maps);
+
 // a supr
-void	ft_printf_maps(t_maps *maps);	//in ft_maps_valide.c
+// void	ft_printf_maps(t_maps *maps);	//in ft_maps_valide.c
 
 #endif

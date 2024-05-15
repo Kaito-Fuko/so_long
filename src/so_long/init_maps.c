@@ -6,18 +6,11 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/13 16:29:15 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:11:08 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	init_param(t_maps *maps, char c)
-{
-	maps->s.y = maps->y;
-	maps->s.x = ft_strlen(maps->maps[0]);
-	prem_charac(maps, c);
-}
 
 void	free_split(char **str)
 {
@@ -27,6 +20,21 @@ void	free_split(char **str)
 	while (str[++i])
 		free(str[i]);
 	free(str);
+}
+
+void	init_param_zero(t_maps *maps)
+{
+	// maps->w = malloc(sizeof(t_win));
+	maps->maps = NULL;
+	maps->count.c = 0;
+	maps->count.e = 0;
+	maps->count.p = 0;
+	maps->p.x = 0;
+	maps->p.y = 0;
+	maps->s.x = 0;
+	maps->s.y = 0;
+	maps->x = 0;
+	maps->y = 0;
 }
 
 int	ft_check_ber(char *str)
@@ -80,18 +88,17 @@ void	ft_maps(char *fichier, t_maps *maps)
 	fd = open(fichier, O_RDONLY);
 	if (fd < 0)
 		return ;
-	printf("x = %i | y = %i\n", maps->x, maps->y);
 	if (maps->y == 0 && maps->x == 0)
 		return ;
-	maps->maps = ft_calloc(maps->y, (sizeof(char *) + 1));
+	maps->maps = malloc((maps->y + 1) * (sizeof(char *)));
 	if (!maps->maps)
 		return ;
 	while (++i < maps->y && maps->x != 0)
 	{
-		maps->maps[i] = malloc(maps->x * sizeof(char) + 1);
-		if (!maps->maps[i])
-			return ;
 		maps->maps[i] = get_next_line(fd);
-		maps->maps[i][maps->x] = '\0';
+		if (!maps->maps[i])
+			return (free_split(maps->maps));
+		maps->maps[i][ft_strlen(maps->maps[i])] = '\0';
 	}
+	maps->maps[maps->y] = NULL;
 }

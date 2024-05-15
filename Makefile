@@ -24,7 +24,7 @@ GET_NEXT_LINE_PATH	= $(get_next_line:%=src/gnl/%)
 get_next_line		= get_next_line.c get_next_line_utils.c
 
 SO_LONG_PATH	= $(so_long:%=src/so_long/%)
-so_long			= so_long.c init_maps.c ft_maps_valide.c flood_fill.c
+so_long			= so_long.c init_maps.c ft_maps_valide.c flood_fill.c key_mlx.c
 				
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -39,7 +39,8 @@ all: $(NAME)
 
 
 $(NAME): $(OBJS)
-		@$(CC) $(OBJS) -o $(NAME) 
+		@make -C minilibx/
+		@$(CC) $(OBJS) minilibx/libmlx_Linux.a -L mlx -lXext -lX11 -lm  -o $(NAME)
 		@echo "$(COLOR_GREEN)$(COLOR_BOLD)Compilation faite 👍 $(COLOR_RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c include/libft.h include/so_long.h include/get_next_line.h
