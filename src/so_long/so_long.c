@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/15 17:11:35 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:22:45 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_graphique(t_maps *maps)
 	maps->w.w_ptr = mlx_new_window(maps->w.m_ptr, (t * maps->x), (t * maps->y), "Window");
 	if (!maps->w.w_ptr)
 		return ;
-	mlx_hook(maps->w.w_ptr, 2, 1L<<0, key_esc, &maps->w);
+	mlx_hook(maps->w.w_ptr, 2, 1L<<0, key_esc, maps);
 	mlx_loop(maps->w.m_ptr);
 }
 
