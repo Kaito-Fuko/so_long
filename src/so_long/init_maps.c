@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/15 17:11:08 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:56:52 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	free_split(char **str)
 
 void	init_param_zero(t_maps *maps)
 {
-	// maps->w = malloc(sizeof(t_win));
 	maps->maps = NULL;
 	maps->count.c = 0;
 	maps->count.e = 0;

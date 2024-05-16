@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/15 17:22:45 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:04:11 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,21 @@ int	init_maps(char *fichier, t_maps *maps)
 
 void	ft_graphique(t_maps *maps)
 {
-	int	t = 25;
+	int	h;
+	int	w;
 
+	h = 50 * (maps->x - 1);
+	w = 50 * maps->y;
 	maps->w.m_ptr = mlx_init();
 	if (!maps->w.m_ptr)
 		return ;
-	maps->w.w_ptr = mlx_new_window(maps->w.m_ptr, (t * maps->x), (t * maps->y), "Window");
+	maps->w.w_ptr = mlx_new_window(maps->w.m_ptr, h, w, "Window");
 	if (!maps->w.w_ptr)
 		return ;
-	mlx_hook(maps->w.w_ptr, 2, 1L<<0, key_esc, maps);
+	ft_image(&maps->w);
+	image_maps(maps->maps, maps->w.m_ptr, maps->w.w_ptr, maps->w);
+	mlx_hook(maps->w.w_ptr, 17, 1l << 17, esc, maps);
+	mlx_hook(maps->w.w_ptr, 2, 1L << 0, key_esc, maps);
 	mlx_loop(maps->w.m_ptr);
 }
 
