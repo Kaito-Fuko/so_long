@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:48:37 by kaito             #+#    #+#             */
-/*   Updated: 2024/05/16 18:00:12 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:16:52 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,17 @@ char	**ft_tmp(char **maps, char **maps_tmp, int x, int y);
 int		check_one_charac(char **maps, t_count count);
 
 // key_mlx
-int	esc(t_maps *maps);
-int key_esc(int keycode, t_maps *maps);
+int		esc(t_maps *maps);
+int		key_esc(int keycode, t_maps *maps);
 
 // image
 void    ft_image(t_win *win);
 void	image_maps(char **maps, void *m_ptr, void *w_ptr, t_win win);
+
+// a placer
+void	ft_is_w(t_maps *maps);
+int		*ft_found_p(char **maps);
+void	ft_is_a(t_maps *maps);
 
 // a supr
 // void	ft_printf_maps(t_maps *maps);	//in ft_maps_valide.c
