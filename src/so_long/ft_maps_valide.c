@@ -6,25 +6,25 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:50:31 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/15 14:03:24 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/21 18:00:54 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// void	ft_printf_maps(t_maps *maps)
-// {
-// 	int	i;
+void	ft_printf_maps(t_maps *maps)
+{
+	int	i;
 
-// 	i = -1;
-// 	printf("x = %i, y = %i\n", maps->x, maps->y);
-// 	while (maps->maps[++i])
-// 		printf("-> %s", maps->maps[i]);
-// 	printf("\n");
-// 	printf("pos x = %i, pos y = %i\n", maps->p.x, maps->p.y);
-// 	printf("size x = %i, size y = %i\n", maps->s.x, maps->s.y);
-// 	printf("\n");
-// }
+	i = -1;
+	printf("x = %i, y = %i\n", maps->x, maps->y);
+	while (maps->maps[++i])
+		printf("%i -> %s", i, maps->maps[i]);
+	printf("\n");
+	printf("pos x = %i, pos y = %i\n", maps->p.x, maps->p.y);
+	printf("size x = %i, size y = %i\n", maps->s.x, maps->s.y);
+	printf("\n");
+}
 
 int	ft_check(char *maps, unsigned int size)
 {
@@ -43,7 +43,7 @@ int	ft_check(char *maps, unsigned int size)
 
 int	check_chemin(t_maps *maps)
 {
-	if (check_one_charac(maps->maps, maps->count) == -1)
+	if (check_one_charac(maps->maps, maps->count, maps) == -1)
 		return (free_split(maps->maps), -1);
 	init_param(maps, 'P');
 	flood(maps->maps, maps->s, maps->p);

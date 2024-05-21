@@ -1,8 +1,8 @@
 /* XPM */
-static char *bleu[] = {
+static char *sol so_long propre[] = {
 /* columns rows colors chars-per-pixel */
-"50 50 1 1 ",
-"  c blue",
+"50 50 1 1",
+"  c #FEC89A",
 /* pixels */
 "                                                  ",
 "                                                  ",

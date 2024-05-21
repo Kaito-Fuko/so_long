@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/16 17:56:52 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:17:50 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	init_param_zero(t_maps *maps)
 	maps->p.y = 0;
 	maps->s.x = 0;
 	maps->s.y = 0;
+	maps->per = 0;
+	maps->pe = 0;
 	maps->x = 0;
 	maps->y = 0;
 }

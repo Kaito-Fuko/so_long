@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 14:57:10 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/15 13:44:47 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/21 16:18:03 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**ft_tmp(char **maps, char **maps_tmp, int x, int y)
 	return (maps_tmp);
 }
 
-int	check_one_charac(char **maps, t_count count)
+int	check_one_charac(char **maps, t_count count, t_maps *ma_ps)
 {
 	int	i;
 	int	j;
@@ -82,14 +82,18 @@ int	check_one_charac(char **maps, t_count count)
 		while (maps[i][++j])
 		{
 			if (maps[i][j] == 'P')
+			{
 				count.p++;
+				ma_ps->pe = i;
+				ma_ps->per = j;
+			}
 			if (maps[i][j] == 'E')
 				count.e++;
 			if (maps[i][j] == 'C')
-				count.c++;
+				ma_ps->count.c++;
 		}
 	}
-	if (count.c > 0 && count.e == 1 && count.p == 1)
+	if (ma_ps->count.c > 0 && count.e == 1 && count.p == 1)
 		return (count.p);
 	return (-1);
 }

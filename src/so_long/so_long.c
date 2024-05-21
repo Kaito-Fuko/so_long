@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/16 18:04:11 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/21 18:11:46 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_graphique(t_maps *maps)
 	maps->w.w_ptr = mlx_new_window(maps->w.m_ptr, h, w, "Window");
 	if (!maps->w.w_ptr)
 		return ;
-	ft_image(&maps->w);
-	image_maps(maps->maps, maps->w.m_ptr, maps->w.w_ptr, maps->w);
+	ft_image(&maps->w, maps);
+	image_maps(maps, maps->w.m_ptr, maps->w.w_ptr, maps->w);
 	mlx_hook(maps->w.w_ptr, 17, 1l << 17, esc, maps);
 	mlx_hook(maps->w.w_ptr, 2, 1L << 0, key_esc, maps);
 	mlx_loop(maps->w.m_ptr);
@@ -67,6 +67,7 @@ int	main(int ac, char **av)
 	if (init_maps(av[1], maps) == -1)
 		return (free(maps), ft_putstr_fd("Error : invalid maps\n", 2), 0);
 	ft_putstr_fd("OK : valid maps\n", 1);
+	maps->count.p = 0;
 	ft_graphique(maps);
 	free_split(maps->maps);
 	free(maps);

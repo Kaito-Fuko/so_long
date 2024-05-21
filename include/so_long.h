@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:48:37 by kaito             #+#    #+#             */
-/*   Updated: 2024/05/17 13:16:52 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/21 18:11:25 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,15 @@ typedef struct s_win
 	void	*p;
 	void	*c;
 	void	*e;
+	void	*ex;
 }	t_win;
 
 typedef struct s_maps
 {
 	unsigned int	x;
 	unsigned int	y;
+	int				pe;
+	int				per;
 	char			**maps;
 	t_count			count;
 	t_pos			p;
@@ -91,22 +94,22 @@ void	init_param(t_maps *maps, char c);
 void	flood(char **tab, t_size size, t_pos cur);
 int		check_fill(char **maps);
 char	**ft_tmp(char **maps, char **maps_tmp, int x, int y);
-int		check_one_charac(char **maps, t_count count);
+int		check_one_charac(char **maps, t_count count, t_maps *ma_ps);
 
 // key_mlx
 int		esc(t_maps *maps);
 int		key_esc(int keycode, t_maps *maps);
 
 // image
-void    ft_image(t_win *win);
-void	image_maps(char **maps, void *m_ptr, void *w_ptr, t_win win);
+void    ft_image(t_win *win, t_maps *maps);
+void	image_maps(t_maps *maps, void *m_ptr, void *w_ptr, t_win win);
 
 // a placer
-void	ft_is_w(t_maps *maps);
-int		*ft_found_p(char **maps);
-void	ft_is_a(t_maps *maps);
+void	ft_is_w(t_maps *maps, t_win w);
+void	ft_found_e(char **maps, t_maps *ma_ps);
+void	ft_is_a(t_maps *maps, t_win w);
 
 // a supr
-// void	ft_printf_maps(t_maps *maps);	//in ft_maps_valide.c
+void	ft_printf_maps(t_maps *maps);	//in ft_maps_valide.c
 
 #endif
