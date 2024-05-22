@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:48:37 by kaito             #+#    #+#             */
-/*   Updated: 2024/05/21 18:11:25 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:20:22 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define A 97
 # define S 115
 # define D 100
-
 
 typedef struct s_size
 {
@@ -73,6 +72,7 @@ typedef struct s_maps
 }	t_maps;
 
 // so_long
+void	ft_graphique(t_maps *maps);
 int		init_maps(char *fichier, t_maps *maps);
 
 // init_maps
@@ -97,19 +97,19 @@ char	**ft_tmp(char **maps, char **maps_tmp, int x, int y);
 int		check_one_charac(char **maps, t_count count, t_maps *ma_ps);
 
 // key_mlx
-int		esc(t_maps *maps);
+void	check_correct(t_maps *maps, int *p, int x, int y);
 int		key_esc(int keycode, t_maps *maps);
+void	ft_found_e(char **maps, t_maps *ma_ps);
+int		esc(t_maps *maps);
 
 // image
-void    ft_image(t_win *win, t_maps *maps);
+void	ft_image(t_win *win, t_maps *maps);
 void	image_maps(t_maps *maps, void *m_ptr, void *w_ptr, t_win win);
 
-// a placer
+// is_key
 void	ft_is_w(t_maps *maps, t_win w);
-void	ft_found_e(char **maps, t_maps *ma_ps);
 void	ft_is_a(t_maps *maps, t_win w);
-
-// a supr
-void	ft_printf_maps(t_maps *maps);	//in ft_maps_valide.c
+void	ft_is_s(t_maps *maps, t_win w);
+void	ft_is_d(t_maps *maps, t_win w);
 
 #endif

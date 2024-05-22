@@ -6,11 +6,31 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/21 18:11:46 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:14:36 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_graphique(t_maps *maps)
+{
+	int	h;
+	int	w;
+
+	h = 50 * (maps->x - 1);
+	w = 50 * maps->y;
+	maps->w.m_ptr = mlx_init();
+	if (!maps->w.m_ptr)
+		return ;
+	maps->w.w_ptr = mlx_new_window(maps->w.m_ptr, h, w, "Window");
+	if (!maps->w.w_ptr)
+		return ;
+	ft_image(&maps->w, maps);
+	image_maps(maps, maps->w.m_ptr, maps->w.w_ptr, maps->w);
+	mlx_hook(maps->w.w_ptr, 17, 1l << 17, esc, maps);
+	mlx_hook(maps->w.w_ptr, 2, 1L << 0, key_esc, maps);
+	mlx_loop(maps->w.m_ptr);
+}
 
 int	init_maps(char *fichier, t_maps *maps)
 {
@@ -35,26 +55,6 @@ int	init_maps(char *fichier, t_maps *maps)
 	return (0);
 }
 
-void	ft_graphique(t_maps *maps)
-{
-	int	h;
-	int	w;
-
-	h = 50 * (maps->x - 1);
-	w = 50 * maps->y;
-	maps->w.m_ptr = mlx_init();
-	if (!maps->w.m_ptr)
-		return ;
-	maps->w.w_ptr = mlx_new_window(maps->w.m_ptr, h, w, "Window");
-	if (!maps->w.w_ptr)
-		return ;
-	ft_image(&maps->w, maps);
-	image_maps(maps, maps->w.m_ptr, maps->w.w_ptr, maps->w);
-	mlx_hook(maps->w.w_ptr, 17, 1l << 17, esc, maps);
-	mlx_hook(maps->w.w_ptr, 2, 1L << 0, key_esc, maps);
-	mlx_loop(maps->w.m_ptr);
-}
-
 int	main(int ac, char **av)
 {
 	t_maps	*maps;
@@ -66,8 +66,8 @@ int	main(int ac, char **av)
 		return (free(maps), ft_putstr_fd("Error : invalid files\n", 2), 0);
 	if (init_maps(av[1], maps) == -1)
 		return (free(maps), ft_putstr_fd("Error : invalid maps\n", 2), 0);
-	ft_putstr_fd("OK : valid maps\n", 1);
 	maps->count.p = 0;
+	maps->count.e = 0;
 	ft_graphique(maps);
 	free_split(maps->maps);
 	free(maps);

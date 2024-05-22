@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/21 14:17:50 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:26:06 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	init_param_zero(t_maps *maps)
 	maps->count.c = 0;
 	maps->count.e = 0;
 	maps->count.p = 0;
+	maps->w.ex = NULL;
+	maps->w.m = NULL;
+	maps->w.f = NULL;
+	maps->w.p = NULL;
+	maps->w.c = NULL;
+	maps->w.e = NULL;
 	maps->p.x = 0;
 	maps->p.y = 0;
 	maps->s.x = 0;

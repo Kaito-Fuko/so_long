@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:57:04 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/21 18:12:24 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:11:09 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_image(t_win *win, t_maps *maps)
 	win->ex = mlx_xpm_file_to_image(win->m_ptr, "src/image/2e.xpm", &w, &h);
 	if (!win->ex)
 		esc(maps);
-	
 }
 
 void	image_maps(t_maps *maps, void *m_ptr, void *w_ptr, t_win w)

@@ -6,33 +6,11 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:25:01 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/21 18:10:50 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:24:10 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	esc(t_maps *maps)
-{
-	if (maps->w.c)
-		mlx_destroy_image(maps->w.m_ptr, maps->w.c);
-	if (maps->w.m)
-		mlx_destroy_image(maps->w.m_ptr, maps->w.m);
-	if (maps->w.f)
-		mlx_destroy_image(maps->w.m_ptr, maps->w.f);
-	if (maps->w.p)
-		mlx_destroy_image(maps->w.m_ptr, maps->w.p);
-	if (maps->w.e)
-		mlx_destroy_image(maps->w.m_ptr, maps->w.e);
-	if (maps->w.ex)
-		mlx_destroy_image(maps->w.m_ptr, maps->w.ex);
-	mlx_destroy_window(maps->w.m_ptr, maps->w.w_ptr);
-	mlx_destroy_display(maps->w.m_ptr);
-	free_split(maps->maps);
-	free(maps->w.m_ptr);
-	free(maps);
-	exit (0);
-}
 
 void	check_correct(t_maps *maps, int *p, int x, int y)
 {
@@ -44,86 +22,7 @@ void	check_correct(t_maps *maps, int *p, int x, int y)
 	maps->maps[p[0] + x][p[1] + y] = 'P';
 	p[0] = p[0] + x;
 	p[1] = p[1] + y;
-}
-
-void	ft_is_w(t_maps *maps, t_win w)
-{
-	int p[2];
-	int	i;
-	int	j;
-
-	p[0] = maps->pe;
-	p[1] = maps->per;
-	if (maps->maps[p[0] + -1][p[1] + 0] == '1')
-		return ;
-	check_correct(maps, p, -1, 0);
-	maps->pe = p[0];
-	maps->per = p[1];
-	j = maps->s.x;
-	i = maps->s.y;
-	if (maps->maps[maps->s.x][maps->s.y] == '0')
-		maps->maps[maps->s.x][maps->s.y] = 'E';
-	image_maps(maps, w.m_ptr, w.w_ptr, w);
-}
-
-void	ft_is_a(t_maps *maps, t_win w)
-{
-	int p[2];
-	int	i;
-	int	j;
-
-	p[0] = maps->pe;
-	p[1] = maps->per;
-	if (maps->maps[p[0] + 0][p[1] + -1] == '1')
-		return ;
-	check_correct(maps, p, 0, -1);
-	maps->pe = p[0];
-	maps->per = p[1];
-	j = maps->s.x;
-	i = maps->s.y;
-	if (maps->maps[maps->s.x][maps->s.y] == '0')
-		maps->maps[maps->s.x][maps->s.y] = 'E';
-	image_maps(maps, w.m_ptr, w.w_ptr, w);
-}
-
-void	ft_is_s(t_maps *maps, t_win w)
-{
-	int p[2];
-	int	i;
-	int	j;
-
-	p[0] = maps->pe;
-	p[1] = maps->per;
-	if (maps->maps[p[0] + 1][p[1] + 0] == '1')
-		return ;
-	check_correct(maps, p, 1, 0);
-	maps->pe = p[0];
-	maps->per = p[1];
-	j = maps->s.x;
-	i = maps->s.y;
-	if (maps->maps[maps->s.x][maps->s.y] == '0')
-		maps->maps[maps->s.x][maps->s.y] = 'E';
-	image_maps(maps, w.m_ptr, w.w_ptr, w);
-}
-
-void	ft_is_d(t_maps *maps, t_win w)
-{
-	int p[2];
-	int	i;
-	int	j;
-
-	p[0] = maps->pe;
-	p[1] = maps->per;
-	if (maps->maps[p[0] + 0][p[1] + 1] == '1')
-		return ;
-	check_correct(maps, p, 0, 1);
-	maps->pe = p[0];
-	maps->per = p[1];
-	j = maps->s.x;
-	i = maps->s.y;
-	if (maps->maps[maps->s.x][maps->s.y] == '0')
-		maps->maps[maps->s.x][maps->s.y] = 'E';
-	image_maps(maps, w.m_ptr, w.w_ptr, w);
+	maps->count.e += 1;
 }
 
 int	key_esc(int keycode, t_maps *maps)
@@ -161,4 +60,33 @@ void	ft_found_e(char **maps, t_maps *ma_ps)
 			}
 		}
 	}
+}
+
+int	esc(t_maps *maps)
+{
+	if (maps->count.c == maps->count.p)
+		ft_putstr_fd("GAGNER !!\n", 1);
+	ft_putstr_fd("Vous avez fait ", 1);
+	ft_putnbr_fd(maps->count.e, 1);
+	ft_putstr_fd(" de coup, pour recupere ", 1);
+	ft_putnbr_fd(maps->count.p, 1);
+	ft_putstr_fd(" d'oeuf.\n", 1);
+	if (maps->w.m)
+		mlx_destroy_image(maps->w.m_ptr, maps->w.m);
+	if (maps->w.f)
+		mlx_destroy_image(maps->w.m_ptr, maps->w.f);
+	if (maps->w.p)
+		mlx_destroy_image(maps->w.m_ptr, maps->w.p);
+	if (maps->w.c)
+		mlx_destroy_image(maps->w.m_ptr, maps->w.c);
+	if (maps->w.e)
+		mlx_destroy_image(maps->w.m_ptr, maps->w.e);
+	if (maps->w.ex)
+		mlx_destroy_image(maps->w.m_ptr, maps->w.ex);
+	mlx_destroy_window(maps->w.m_ptr, maps->w.w_ptr);
+	mlx_destroy_display(maps->w.m_ptr);
+	free_split(maps->maps);
+	free(maps->w.m_ptr);
+	free(maps);
+	exit (0);
 }
