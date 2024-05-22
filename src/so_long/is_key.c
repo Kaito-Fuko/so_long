@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:17:27 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 13:18:06 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:23:42 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	ft_is_w(t_maps *maps, t_win w)
 	if (maps->maps[maps->s.x][maps->s.y] == '0')
 		maps->maps[maps->s.x][maps->s.y] = 'E';
 	image_maps(maps, w.m_ptr, w.w_ptr, w);
+	if (maps->s.x == p[0] && maps->s.y == p[1]
+		&& maps->count.c == maps->count.p)
+		esc(maps);
 }
 
 void	ft_is_a(t_maps *maps, t_win w)
@@ -50,6 +53,9 @@ void	ft_is_a(t_maps *maps, t_win w)
 	if (maps->maps[maps->s.x][maps->s.y] == '0')
 		maps->maps[maps->s.x][maps->s.y] = 'E';
 	image_maps(maps, w.m_ptr, w.w_ptr, w);
+	if (maps->s.x == p[0] && maps->s.y == p[1]
+		&& maps->count.c == maps->count.p)
+		esc(maps);
 }
 
 void	ft_is_s(t_maps *maps, t_win w)
@@ -70,6 +76,9 @@ void	ft_is_s(t_maps *maps, t_win w)
 	if (maps->maps[maps->s.x][maps->s.y] == '0')
 		maps->maps[maps->s.x][maps->s.y] = 'E';
 	image_maps(maps, w.m_ptr, w.w_ptr, w);
+	if (maps->s.x == p[0] && maps->s.y == p[1]
+		&& maps->count.c == maps->count.p)
+		esc(maps);
 }
 
 void	ft_is_d(t_maps *maps, t_win w)
@@ -90,4 +99,7 @@ void	ft_is_d(t_maps *maps, t_win w)
 	if (maps->maps[maps->s.x][maps->s.y] == '0')
 		maps->maps[maps->s.x][maps->s.y] = 'E';
 	image_maps(maps, w.m_ptr, w.w_ptr, w);
+	if (maps->s.x == p[0] && maps->s.y == p[1]
+		&& maps->count.c == maps->count.p)
+		esc(maps);
 }

@@ -6,11 +6,36 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 13:14:36 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:27:52 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	init_maps(char *fichier, t_maps *maps)
+{
+	char	**maps_tmp;
+
+	maps_tmp = NULL;
+	init_param_zero(maps);
+	ft_line(fichier, maps);
+	if (maps->x > 52 || maps->y > 27)
+		return (-1);
+	ft_maps(fichier, maps);
+	if (!maps->maps)
+		return (-1);
+	maps_tmp = ft_tmp(maps->maps, maps_tmp, maps->x, maps->y);
+	if (!maps_tmp)
+		return (free_split(maps->maps), -1);
+	if (check_maps(maps) == -1)
+		return (free_split(maps_tmp), -1);
+	if (check_chemin(maps) == -1)
+		return (free_split(maps_tmp), -1);
+	free_split(maps->maps);
+	maps->maps = ft_tmp(maps_tmp, maps->maps, maps->x, maps->y);
+	free_split(maps_tmp);
+	return (0);
+}
 
 void	ft_graphique(t_maps *maps)
 {
@@ -30,29 +55,6 @@ void	ft_graphique(t_maps *maps)
 	mlx_hook(maps->w.w_ptr, 17, 1l << 17, esc, maps);
 	mlx_hook(maps->w.w_ptr, 2, 1L << 0, key_esc, maps);
 	mlx_loop(maps->w.m_ptr);
-}
-
-int	init_maps(char *fichier, t_maps *maps)
-{
-	char	**maps_tmp;
-
-	maps_tmp = NULL;
-	init_param_zero(maps);
-	ft_line(fichier, maps);
-	ft_maps(fichier, maps);
-	if (!maps->maps)
-		return (-1);
-	maps_tmp = ft_tmp(maps->maps, maps_tmp, maps->x, maps->y);
-	if (!maps_tmp)
-		return (free_split(maps->maps), -1);
-	if (check_maps(maps) == -1)
-		return (free_split(maps_tmp), -1);
-	if (check_chemin(maps) == -1)
-		return (free_split(maps_tmp), -1);
-	free_split(maps->maps);
-	maps->maps = ft_tmp(maps_tmp, maps->maps, maps->x, maps->y);
-	free_split(maps_tmp);
-	return (0);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 12:26:06 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:22:53 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,26 @@ void	free_split(char **str)
 	while (str[++i])
 		free(str[i]);
 	free(str);
+}
+
+int	ft_check_ber(char *str)
+{
+	size_t	i;
+	int		j;
+	char	*ber;
+
+	ber = ".ber";
+	i = ft_strlen(str) - 1;
+	j = ft_strlen(ber) - 1;
+	while (ber[j] && ber[j] == str[i] && str[i] && i > 0 && j > 0)
+	{
+		j--;
+		i--;
+	}
+	if (open(str, O_RDONLY) > 0)
+		if (j == 0)
+			return (i);
+	return (-1);
 }
 
 void	init_param_zero(t_maps *maps)
@@ -42,26 +62,6 @@ void	init_param_zero(t_maps *maps)
 	maps->pe = 0;
 	maps->x = 0;
 	maps->y = 0;
-}
-
-int	ft_check_ber(char *str)
-{
-	size_t	i;
-	int		j;
-	char	*ber;
-
-	ber = ".ber";
-	i = ft_strlen(str) - 1;
-	j = ft_strlen(ber) - 1;
-	while (ber[j] && ber[j] == str[i] && str[i] && i > 0 && j > 0)
-	{
-		j--;
-		i--;
-	}
-	if (open(str, O_RDONLY) > 0)
-		if (j == 0)
-			return (i);
-	return (-1);
 }
 
 void	ft_line(char *fichier, t_maps *maps)

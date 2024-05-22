@@ -6,16 +6,30 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:25:01 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 13:24:10 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:59:10 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int	key_esc(int keycode, t_maps *maps)
+{
+	if (keycode == ESC)
+		esc(maps);
+	ft_found_e(maps->maps, maps);
+	if (keycode == W || keycode == HAUT)
+		ft_is_w(maps, maps->w);
+	if (keycode == A || keycode == GAUCHE)
+		ft_is_a(maps, maps->w);
+	if (keycode == S || keycode == BAS)
+		ft_is_s(maps, maps->w);
+	if (keycode == D || keycode == DROITE)
+		ft_is_d(maps, maps->w);
+	return (0);
+}
+
 void	check_correct(t_maps *maps, int *p, int x, int y)
 {
-	if (maps->maps[p[0] + x][p[1] + y] == 'E' && maps->count.c == maps->count.p)
-		esc(maps);
 	if (maps->maps[p[0] + x][p[1] + y] == 'C')
 		maps->count.p += 1;
 	maps->maps[p[0]][p[1]] = '0';
@@ -23,22 +37,11 @@ void	check_correct(t_maps *maps, int *p, int x, int y)
 	p[0] = p[0] + x;
 	p[1] = p[1] + y;
 	maps->count.e += 1;
-}
-
-int	key_esc(int keycode, t_maps *maps)
-{
-	if (keycode == ESC)
-		esc(maps);
-	ft_found_e(maps->maps, maps);
-	if (keycode == W)
-		ft_is_w(maps, maps->w);
-	if (keycode == A)
-		ft_is_a(maps, maps->w);
-	if (keycode == S)
-		ft_is_s(maps, maps->w);
-	if (keycode == D)
-		ft_is_d(maps, maps->w);
-	return (0);
+	ft_putstr_fd("Nombre de coup = ", 1);
+	ft_putnbr_fd(maps->count.e, 1);
+	ft_putstr_fd("\nNombre d'oeuf capturer = ", 1);
+	ft_putnbr_fd(maps->count.p, 1);
+	ft_putstr_fd("\n\n", 1);
 }
 
 void	ft_found_e(char **maps, t_maps *ma_ps)

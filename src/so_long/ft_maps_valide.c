@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:50:31 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 13:18:55 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:19:05 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@
 // 	printf("\n");
 // }
 
+int	check_chemin(t_maps *maps)
+{
+	if (check_one_charac(maps->maps, maps->count, maps) == -1)
+		return (free_split(maps->maps), -1);
+	init_param(maps, 'P');
+	flood(maps->maps, maps->s, maps->p);
+	if (check_fill(maps->maps) == -1)
+		return (-1);
+	return (0);
+}
+
 int	ft_check(char *maps, unsigned int size)
 {
 	int	i;
@@ -38,17 +49,6 @@ int	ft_check(char *maps, unsigned int size)
 	if (ft_strlen(maps) == size && maps[i] == '\0')
 		return (0);
 	return (-1);
-}
-
-int	check_chemin(t_maps *maps)
-{
-	if (check_one_charac(maps->maps, maps->count, maps) == -1)
-		return (free_split(maps->maps), -1);
-	init_param(maps, 'P');
-	flood(maps->maps, maps->s, maps->p);
-	if (check_fill(maps->maps) == -1)
-		return (-1);
-	return (0);
 }
 
 int	ft_correct(char *maps, unsigned int size)
