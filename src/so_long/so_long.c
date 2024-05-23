@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 15:27:52 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:51:47 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	init_maps(char *fichier, t_maps *maps)
 	ft_maps(fichier, maps);
 	if (!maps->maps)
 		return (-1);
+	if (check_maps(maps) == -1)
+		return (-1);
 	maps_tmp = ft_tmp(maps->maps, maps_tmp, maps->x, maps->y);
 	if (!maps_tmp)
 		return (free_split(maps->maps), -1);
-	if (check_maps(maps) == -1)
-		return (free_split(maps_tmp), -1);
 	if (check_chemin(maps) == -1)
 		return (free_split(maps_tmp), -1);
 	free_split(maps->maps);
@@ -73,5 +73,6 @@ int	main(int ac, char **av)
 	ft_graphique(maps);
 	free_split(maps->maps);
 	free(maps);
+	ft_putstr_fd("Error : invalid environement\n", 2);
 	return (0);
 }

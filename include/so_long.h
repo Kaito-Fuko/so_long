@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:48:37 by kaito             #+#    #+#             */
-/*   Updated: 2024/05/22 16:58:25 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:23:20 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,7 @@ void	ft_is_w(t_maps *maps, t_win w);
 void	ft_is_a(t_maps *maps, t_win w);
 void	ft_is_s(t_maps *maps, t_win w);
 void	ft_is_d(t_maps *maps, t_win w);
+
+void	ft_printf_maps(t_maps *maps);
 
 #endif

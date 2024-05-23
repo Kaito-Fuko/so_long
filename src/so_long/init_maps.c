@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 16:22:53 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:09:14 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,21 @@ int	ft_check_ber(char *str)
 {
 	size_t	i;
 	int		j;
+	int		fd;
 	char	*ber;
 
 	ber = ".ber";
 	i = ft_strlen(str) - 1;
 	j = ft_strlen(ber) - 1;
-	while (ber[j] && ber[j] == str[i] && str[i] && i > 0 && j > 0)
+	while (ber[j] && str[i] && ber[j] == str[i] && i > 0 && j > 0)
 	{
 		j--;
 		i--;
 	}
-	if (open(str, O_RDONLY) > 0)
+	fd = open(str, O_RDONLY);
+	if (fd > 0)
 		if (j == 0)
-			return (i);
+			return (close(fd), i);
 	return (-1);
 }
 
@@ -74,7 +76,7 @@ void	ft_line(char *fichier, t_maps *maps)
 		return ;
 	ligne = get_next_line(fd);
 	if (ligne == NULL)
-		return ;
+		return ((void)close(fd));
 	maps->x = ft_strlen(ligne);
 	maps->y = 1;
 	while (ligne != NULL && ft_strlen(ligne) == maps->x)
@@ -84,6 +86,7 @@ void	ft_line(char *fichier, t_maps *maps)
 		maps->y++;
 	}
 	free(ligne);
+	close(fd);
 }
 
 void	ft_maps(char *fichier, t_maps *maps)
@@ -96,16 +99,19 @@ void	ft_maps(char *fichier, t_maps *maps)
 	if (fd < 0)
 		return ;
 	if (maps->y == 0 && maps->x == 0)
-		return ;
+		return ((void)close(fd));
 	maps->maps = malloc((maps->y + 1) * (sizeof(char *)));
 	if (!maps->maps)
-		return ;
+		return ((void)close(fd));
 	while (++i < maps->y && maps->x != 0)
 	{
 		maps->maps[i] = get_next_line(fd);
 		if (!maps->maps[i])
-			return (free_split(maps->maps));
+			return ((void)close(fd));
+		if (maps->maps[i][0] == '\0')
+			return ((void)close(fd), free_split(maps->maps));
 		maps->maps[i][ft_strlen(maps->maps[i])] = '\0';
 	}
 	maps->maps[maps->y] = NULL;
+	close(fd);
 }

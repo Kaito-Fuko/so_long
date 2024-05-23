@@ -6,33 +6,34 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:50:31 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/22 15:19:05 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:51:59 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-// void	ft_printf_maps(t_maps *maps)
-// {
-// 	int	i;
+void	ft_printf_maps(t_maps *maps)
+{
+	int	i;
 
-// 	i = -1;
-// 	printf("x = %i, y = %i\n", maps->x, maps->y);
-// 	while (maps->maps[++i])
-// 		printf("%i -> %s", i, maps->maps[i]);
-// 	printf("\n");
-// 	printf("pos x = %i, pos y = %i\n", maps->p.x, maps->p.y);
-// 	printf("size x = %i, size y = %i\n", maps->s.x, maps->s.y);
-// 	printf("\n");
-// }
+	i = -1;
+	printf("x = %i, y = %i\n", maps->x, maps->y);
+	while (maps->maps[++i])
+		printf("%i -> %s", i, maps->maps[i]);
+	printf("\n");
+	printf("pos x = %i, pos y = %i\n", maps->p.x, maps->p.y);
+	printf("size x = %i, size y = %i\n", maps->s.x, maps->s.y);
+	printf("\n");
+}
 
 int	check_chemin(t_maps *maps)
 {
+	ft_printf_maps(maps);
 	if (check_one_charac(maps->maps, maps->count, maps) == -1)
 		return (free_split(maps->maps), -1);
 	init_param(maps, 'P');
 	flood(maps->maps, maps->s, maps->p);
 	if (check_fill(maps->maps) == -1)
-		return (-1);
+		return (free_split(maps->maps), -1);
 	return (0);
 }
 
@@ -74,12 +75,14 @@ int	check_maps(t_maps *maps)
 
 	i = -1;
 	if (!maps->maps[++i])
-		return (free_split(maps->maps), -1);
+		return (-1);
 	if (ft_check(maps->maps[i], maps->x) == -1)
 		return (free_split(maps->maps), -1);
 	while (maps->maps[++i] && maps->maps[i + 1])
 		if (ft_correct(maps->maps[i], maps->x) == -1)
 			return (free_split(maps->maps), -1);
+	if (!maps->maps[i])
+		return (-1);
 	if (maps->maps[i] && ft_check(maps->maps[i], maps->x - 1) == -1)
 		return (free_split(maps->maps), -1);
 	return (0);
