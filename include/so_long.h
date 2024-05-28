@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <mlx.h>
+# include "../mlx/minilibx.h"
 
 # define ESC 65307
 # define GAUCHE 65361

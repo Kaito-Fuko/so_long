@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:52:13 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/23 19:09:14 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:20:36 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	ft_line(char *fichier, t_maps *maps)
 	{
 		free(ligne);
 		ligne = get_next_line(fd);
+		if (!ligne)
+			return ((void)close(fd));
 		maps->y++;
 	}
 	free(ligne);

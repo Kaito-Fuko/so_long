@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/23 18:51:47 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:24:17 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	main(int ac, char **av)
 	t_maps	*maps;
 
 	maps = malloc(sizeof(t_maps));
+	if (!maps)
+		return (0);
 	if (ac != 2)
 		return (free(maps), ft_putstr_fd("Error : invalid argument\n", 2), 0);
 	if (ft_check_ber(av[1]) == -1)
