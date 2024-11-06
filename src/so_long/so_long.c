@@ -6,7 +6,7 @@
 /*   By: jhatchi- <jhatchi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 20:12:36 by jhatchi-          #+#    #+#             */
-/*   Updated: 2024/05/27 10:24:17 by jhatchi-         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:24:21 by jhatchi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	init_maps(char *fichier, t_maps *maps)
 	maps_tmp = NULL;
 	init_param_zero(maps);
 	ft_line(fichier, maps);
-	if (maps->x > 52 || maps->y > 27)
-		return (-1);
+	// if (maps->x > 30 || maps->y > 15)
+	// 	return (-1);
 	ft_maps(fichier, maps);
 	if (!maps->maps)
 		return (-1);
